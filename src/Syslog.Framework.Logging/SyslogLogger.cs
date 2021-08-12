@@ -142,7 +142,8 @@ namespace Syslog.Framework.Logging
 		{
             var tag = name.Replace(".", String.Empty).Replace("_", String.Empty); // Alphanumeric
             tag = tag.Substring(0, Math.Min(32, tag.Length)); // Max length is 32 according to spec
-            return $"<{priority}>{now:MMM dd HH:mm:ss} {host} {tag} {message}";
+            var timestamp = now.ToString("MMM dd HH:mm:ss", CultureInfo.InvariantCulture);
+            return $"<{priority}>{timestamp} {host} {tag} {message}";
 		}
 	}
 
