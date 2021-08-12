@@ -64,7 +64,7 @@ namespace Syslog.Framework.Logging
 			var priority = ((int)_settings.FacilityType * 8) + (int)severity;
 			var now = _settings.UseUtc ? DateTime.UtcNow : DateTime.Now;
 			var msg = FormatMessage(priority, now, _host, _name, _processId, eventId.Id, message);
-			var raw = Encoding.ASCII.GetBytes(msg);
+			var raw = Encoding.UTF8.GetBytes(msg);
 
 			try
 			{
